@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rent a car A&L - Premium Vehicle Rentals</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" type="module" defer></script>
+    <script src="firebase.js" type="module" defer></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Rent a car A&L</div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#cars" class="nav-link">Our Fleet</a></li>
+                <li><a href="#footer" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Welcome to A&L Car Rentals</h1>
+            <p class="hero-subtitle">Good Quality Cars at Affordable Prices</p>
+            <p class="hero-description">Get reliable, well-maintained vehicles without breaking the bank. Premium quality at budget-friendly rates – that's our promise! We offer both car rentals and vehicle sales to meet all your automotive needs.</p>
+            <button class="cta-btn">Explore Our Fleet</button>
+        </div>
+        <div class="hero-overlay"></div>
+    </section>
+
+    <section id="gallery" class="gallery-section">
+        <div class="gallery-container">
+            <h2 class="section-title">Car Gallery</h2>
+            <p class="section-subtitle">Coming Soon - Our Latest Vehicle Collection</p>
+            
+            <div class="gallery-grid">
+                <div class="gallery-card">
+                    <div class="gallery-image">🚗</div>
+                    <h3>Car 1</h3>
+                    <p>Coming Soon</p>
+                </div>
+                
+                <div class="gallery-card">
+                    <div class="gallery-image">🚗</div>
+                    <h3>Car 2</h3>
+                    <p>Coming Soon</p>
+                </div>
+                
+                <div class="gallery-card">
+                    <div class="gallery-image">🚗</div>
+                    <h3>Car 3</h3>
+                    <p>Coming Soon</p>
+                </div>
+                
+                <div class="gallery-card">
+                    <div class="gallery-image">🚗</div>
+                    <h3>Car 4</h3>
+                    <p>Coming Soon</p>
+                </div>
+                
+                <div class="gallery-card">
+                    <div class="gallery-image">🚗</div>
+                    <h3>Car 5</h3>
+                    <p>Coming Soon</p>
+                </div>
+                
+                <div class="gallery-card">
+                    <div class="gallery-image">🚗</div>
+                    <h3>Car 6</h3>
+                    <p>Coming Soon</p>
+                </div>
+                
+                <div class="gallery-card">
+                    <div class="gallery-image">🚗</div>
+                    <h3>Car 7</h3>
+                    <p>Coming Soon</p>
+                </div>
+                
+                <div class="gallery-card">
+                    <div class="gallery-image">🚗</div>
+                    <h3>Car 8</h3>
+                    <p>Coming Soon</p>
+                </div>
+                
+                <div class="gallery-card">
+                    <div class="gallery-image">🚗</div>
+                    <h3>Car 9</h3>
+                    <p>Coming Soon</p>
+                </div>
+                
+                <div class="gallery-card">
+                    <div class="gallery-image">🚗</div>
+                    <h3>Car 10</h3>
+                    <p>Coming Soon</p>
+                </div>
+            </div>
+        </div>
+    </section>
+        <div class="about-container">
+            <h2 class="section-title">Why Choose A&L Rentals?</h2>
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="about-icon">🚗</div>
+                    <h3>Wide Selection</h3>
+                    <p>As a beginning company, we currently offer 10+ quality vehicles. We're committed to expanding our fleet significantly in the future!</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">💰</div>
+                    <h3>Best Prices</h3>
+                    <p>Competitive rates with no hidden fees. Transparent pricing from start to finish.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">⚡</div>
+                    <h3>Quick Booking</h3>
+                    <p>Reserve your car in minutes with our fast and easy online booking system.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">🛡️</div>
+                    <h3>24/7 Support</h3>
+                    <p>Our dedicated team is available round the clock to assist you anytime.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cars" class="cars-section">
+        <div class="cars-container">
+            <h2 class="section-title">Our Fleet</h2>
+            <p class="section-subtitle">Explore our premium selection of vehicles</p>
+            
+            <div class="cars-grid">
+                <div class="car-card">
+                    <div class="car-image">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'%3E%3Crect fill='%23FF6B6B' width='300' height='200'/%3E%3Ctext x='50%' y='50%' font-size='24' fill='white' text-anchor='middle' dominant-baseline='middle'%3ELow Quality%3C/text%3E%3C/svg%3E" alt="Low Quality Cars">
+                    </div>
+                    <div class="car-info">
+                        <h3>Low Quality Cars</h3>
+                        <p class="car-type">Economy & Budget Options</p>
+                        <div class="car-features">
+                            <span>🚗 Basic Models</span>
+                            <span>💰 Most Affordable</span>
+                        </div>
+                        <div class="car-price">
+                            <span class="price">€30/day</span>
+                        </div>
+                        <button class="book-btn">Book Now</button>
+                    </div>
+                </div>
+
+                <div class="car-card">
+                    <div class="car-image">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'%3E%3Crect fill='%234ECDC4' width='300' height='200'/%3E%3Ctext x='50%' y='50%' font-size='24' fill='white' text-anchor='middle' dominant-baseline='middle'%3EMedium Quality%3C/text%3E%3C/svg%3E" alt="Medium Quality Cars">
+                    </div>
+                    <div class="car-info">
+                        <h3>Medium Quality Cars</h3>
+                        <p class="car-type">Standard & Comfortable</p>
+                        <div class="car-features">
+                            <span>🎯 Well-Maintained</span>
+                            <span>✨ Modern Features</span>
+                        </div>
+                        <div class="car-price">
+                            <span class="price">€40/day</span>
+                        </div>
+                        <button class="book-btn">Book Now</button>
+                    </div>
+                </div>
+
+                <div class="car-card">
+                    <div class="car-image">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'%3E%3Crect fill='%23FFD93D' width='300' height='200'/%3E%3Ctext x='50%' y='50%' font-size='24' fill='white' text-anchor='middle' dominant-baseline='middle'%3EHigh Quality%3C/text%3E%3C/svg%3E" alt="High Quality Cars">
+                    </div>
+                    <div class="car-info">
+                        <h3>High Quality Cars</h3>
+                        <p class="car-type">Luxury & Premium</p>
+                        <div class="car-features">
+                            <span>👑 Premium Selection</span>
+                            <span>🚗 Top Performance</span>
+                        </div>
+                        <div class="car-price">
+                            <span class="price">€50/day</span>
+                        </div>
+                        <button class="book-btn">Book Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="comments" class="comments-section">
+        <div class="comments-container">
+            <h2 class="section-title">Customer Comments & Reviews</h2>
+            <p class="section-subtitle">See what our customers think about us</p>
+
+            <div class="comment-form-wrapper">
+                <form id="commentForm" class="comment-form">
+                    <div class="form-group">
+                        <label for="userName">Your Name *</label>
+                        <input type="text" id="userName" required placeholder="Enter your name" maxlength="50">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="commentText">Your Comment *</label>
+                        <textarea id="commentText" required placeholder="Share your experience..." maxlength="500" rows="4"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="rating">Rate Your Experience *</label>
+                        <div class="star-rating">
+                            <input type="radio" id="star5" name="rating" value="5">
+                            <label for="star5" class="star">⭐</label>
+
+                            <input type="radio" id="star4" name="rating" value="4">
+                            <label for="star4" class="star">⭐</label>
+
+                            <input type="radio" id="star3" name="rating" value="3">
+                            <label for="star3" class="star">⭐</label>
+
+                            <input type="radio" id="star2" name="rating" value="2">
+                            <label for="star2" class="star">⭐</label>
+
+                            <input type="radio" id="star1" name="rating" value="1">
+                            <label for="star1" class="star">⭐</label>
+                        </div>
+                        <p id="ratingDisplay" class="rating-display">Please select a rating</p>
+                    </div>
+
+                    <button type="submit" class="submit-comment-btn">Submit Comment</button>
+                    <p id="commentMessage" class="comment-message"></p>
+                </form>
+            </div>
+
+            <div id="commentsDisplay" class="comments-display">
+                <p class="no-comments">No comments yet. Be the first to comment!</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer" class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Rent a car A&L</h4>
+                    <p>Your trusted partner for premium car rentals worldwide.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#cars">Our Fleet</a></li>
+                        <li><a href="#about">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <p>📍 12 Safet Ajeti</p>
+                    <p>📞 +383 049 909 755 & +383 049 909 755</p>
+                    <p>📧 info@alrentals.com</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Facebook</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Rent a car A&L. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

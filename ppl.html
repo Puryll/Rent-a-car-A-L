@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Rent a car A&L</title>
+    <link rel="stylesheet" href="ppll.css">
+    <script src="firebase.js" type="module"></script>
+    <script src="pl.js" type="module"></script>
+</head>
+<body>
+    <div class="admin-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Rent a car A&L</h2>
+                <p>Admin Dashboard</p>
+            </div>
+            <nav class="sidebar-nav">
+                <button class="nav-btn active" data-tab="analytics">📊 Analytics</button>
+                <button class="nav-btn" data-tab="comments">💬 Comments</button>
+                <button class="nav-btn" data-tab="bookings">🚗 Bookings</button>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="index.html" class="back-link">← Back to Website</a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="header">
+                <h1>Dashboard</h1>
+                <div class="refresh-btn" id="refreshBtn">🔄 Refresh</div>
+            </div>
+
+            <section id="analytics" class="tab-content active">
+                <h2>Analytics Overview</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">👁️</div>
+                        <div class="stat-info">
+                            <p class="stat-label">Total Views</p>
+                            <p class="stat-value" id="totalViews">0</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">📅</div>
+                        <div class="stat-info">
+                            <p class="stat-label">Total Bookings</p>
+                            <p class="stat-value" id="totalBookings">0</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">💬</div>
+                        <div class="stat-info">
+                            <p class="stat-label">Total Comments</p>
+                            <p class="stat-value" id="totalComments">0</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">⭐</div>
+                        <div class="stat-info">
+                            <p class="stat-label">Average Rating</p>
+                            <p class="stat-value" id="averageRating">0</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <h3>Recent Activity</h3>
+                    <div id="activityList" class="activity-list">
+                        <p class="no-data">No activity yet</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="comments" class="tab-content">
+                <h2>Comments & Reviews</h2>
+                <div class="filters">
+                    <input type="text" id="searchComments" placeholder="Search by name or comment..." class="search-input">
+                    <select id="ratingFilter" class="filter-select">
+                        <option value="">All Ratings</option>
+                        <option value="5">⭐⭐⭐⭐⭐ 5 Stars</option>
+                        <option value="4">⭐⭐⭐⭐ 4 Stars</option>
+                        <option value="3">⭐⭐⭐ 3 Stars</option>
+                        <option value="2">⭐⭐ 2 Stars</option>
+                        <option value="1">⭐ 1 Star</option>
+                    </select>
+                </div>
+                <div id="commentsList" class="comments-list">
+                    <p class="no-data">No comments yet</p>
+                </div>
+            </section>
+
+            <section id="bookings" class="tab-content">
+                <h2>Bookings</h2>
+                <div id="bookingsList" class="bookings-list">
+                    <p class="no-data">No bookings recorded yet</p>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
