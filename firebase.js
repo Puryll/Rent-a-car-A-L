@@ -32,4 +32,4 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebas
     doc,
     updateDoc,
     deleteDoc,
-  }
+  };
