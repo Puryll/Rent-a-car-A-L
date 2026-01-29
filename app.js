@@ -17,7 +17,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 document.querySelectorAll('.book-btn').forEach(button => {
     button.addEventListener('click', function (e) {
         recordBooking(this);
-        window.open('https://www.facebook.com', '_blank');
+        window.open('https://www.facebook.com/almirp', '_blank');
     });
 });
 
@@ -40,7 +40,7 @@ document.querySelectorAll('.car-card, .about-card, .gallery-card').forEach(card 
 });
 
 document.querySelector('.cta-btn').addEventListener('click', () => {
-    window.open('https://www.facebook.com', '_blank');
+    window.open('https://www.facebook.com/almirp', '_blank');
 });
 
 window.addEventListener('scroll', () => {
