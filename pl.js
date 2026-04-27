@@ -1,39 +1,68 @@
-import { db, RentACar, getDocs, deleteDoc, doc } from "./firebase.js";
+import { db, RentACar, getDocs, deleteDoc, doc, updateDoc, addDoc } from "./firebase.js";
 import { collection, query, orderBy, limit } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
 
-const tabButtons = document.querySelectorAll('.nav-btn');
-const tabContents = document.querySelectorAll('.tab-content');
-const refreshBtn = document.getElementById('refreshBtn');
-const searchInput = document.getElementById('searchComments');
-const ratingFilter = document.getElementById('ratingFilter');
-
+const adminLoginForm = document.getElementById('adminLoginForm');
+const adminMessage = document.getElementById('adminMessage');
+let searchInput;
+let ratingFilter;
 let allComments = [];
 let allBookings = [];
 
-tabButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-        const tabName = btn.dataset.tab;
-        
-        tabButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        
-        tabContents.forEach(content => content.classList.remove('active'));
-        document.getElementById(tabName).classList.add('active');
+adminLoginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const username = document.getElementById('adminUsername').value;
+    const password = document.getElementById('adminPassword').value;
+    const email = document.getElementById('adminEmail').value;
+
+    if (username === 'Puryll' && password === 'Alyrap1234' && email === 'YllPllana11@outlook.com') {
+        document.getElementById('loginContainer').style.display = 'none';
+        document.getElementById('dashboardContainer').style.display = 'block';
+        adminMessage.textContent = '';
+        // Initialize dashboard
+        initializeDashboard();
+    } else {
+        adminMessage.textContent = 'Invalid credentials';
+    }
+});
+
+function initializeDashboard() {
+    const tabButtons = document.querySelectorAll('.nav-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+    const refreshBtn = document.getElementById('refreshBtn');
+    searchInput = document.getElementById('searchComments');
+    ratingFilter = document.getElementById('ratingFilter');
+
+    tabButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const tabName = btn.dataset.tab;
+            
+            tabButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            tabContents.forEach(content => content.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+        });
     });
-});
 
-refreshBtn.addEventListener('click', () => {
-    refreshBtn.style.transform = 'rotate(360deg)';
-    setTimeout(() => {
-        refreshBtn.style.transform = 'rotate(0)';
-        loadAnalytics();
-        loadComments();
-        loadBookings();
-    }, 500);
-});
+    refreshBtn.addEventListener('click', () => {
+        refreshBtn.style.transform = 'rotate(360deg)';
+        setTimeout(() => {
+            refreshBtn.style.transform = 'rotate(0)';
+            loadAnalytics();
+            loadComments();
+            loadBookings();
+            loadCars();
+        }, 500);
+    });
 
-searchInput.addEventListener('input', filterComments);
-ratingFilter.addEventListener('change', filterComments);
+    searchInput.addEventListener('input', filterComments);
+    ratingFilter.addEventListener('change', filterComments);
+
+    loadAnalytics();
+    loadComments();
+    loadBookings();
+    loadCars();
+}
 
 async function loadAnalytics() {
     try {
@@ -169,6 +198,19 @@ window.deleteComment = async function(commentId) {
     }
 };
 
+window.deleteBooking = async function(bookingId) {
+    if (confirm('Delete this booking after completion?')) {
+        try {
+            await deleteDoc(doc(db, 'bookings', bookingId));
+            loadBookings();
+            loadAnalytics();
+        } catch (error) {
+            console.error('Error deleting booking:', error);
+            alert('Failed to delete booking');
+        }
+    }
+};
+
 async function loadBookings() {
     try {
         const bookingsRef = collection(db, 'bookings');
@@ -216,15 +258,99 @@ function displayBookings() {
                     <p class="booking-detail-value">${date}</p>
                 </div>
             </div>
+            <button class="delete-btn" onclick="deleteBooking('${booking.id}')">Mark complete</button>
         `;
         bookingsList.appendChild(bookingCard);
     });
 }
 
-loadAnalytics();
-loadComments();
-loadBookings();
+async function loadCars() {
+    try {
+        const carsRef = collection(db, 'cars');
+        const querySnapshot = await getDocs(carsRef);
+        
+        const carsList = document.getElementById('carsList');
+        carsList.innerHTML = '';
+        
+        if (querySnapshot.empty) {
+            // Initialize with default cars
+            const defaultCars = [
+                { name: 'BMW X1 AUTOMATIK', price: '€35/day', status: 'available', rentedUntil: null },
+                { name: 'Golf 7 Automatik', price: '€35/day', status: 'available', rentedUntil: null },
+                { name: 'Golf 6 Plus', price: '€30/day', status: 'available', rentedUntil: null },
+                { name: 'Golf 7 Automatik 2', price: '€35/day', status: 'available', rentedUntil: null },
+                { name: 'Golf 7 Automatik 3', price: '€35/day', status: 'available', rentedUntil: null },
+                { name: 'Golf 7 Automatik 4', price: '€35/day', status: 'available', rentedUntil: null },
+            ];
+            
+            for (const car of defaultCars) {
+                await addDoc(carsRef, car);
+            }
+            
+            // Reload after adding
+            loadCars();
+            return;
+        }
+        
+        querySnapshot.forEach(doc => {
+            const car = { id: doc.id, ...doc.data() };
+            const carCard = document.createElement('div');
+            carCard.className = 'car-card';
+            carCard.innerHTML = `
+                <div class="car-header">
+                    <h3 class="car-name">${car.name}</h3>
+                    <span class="car-status ${car.status}">${car.status.toUpperCase()}</span>
+                </div>
+                <div class="car-details">
+                    <div class="car-detail">
+                        <p class="car-detail-label">Price</p>
+                        <p class="car-detail-value">${car.price}</p>
+                    </div>
+                    <div class="car-detail">
+                        <p class="car-detail-label">Status</p>
+                        <p class="car-detail-value">${car.status}</p>
+                    </div>
+                    <div class="car-detail">
+                        <p class="car-detail-label">Rented Until</p>
+                        <p class="car-detail-value">${car.rentedUntil || 'N/A'}</p>
+                    </div>
+                </div>
+                <div class="car-controls">
+                    <select id="status-${car.id}">
+                        <option value="available" ${car.status === 'available' ? 'selected' : ''}>Available</option>
+                        <option value="rented" ${car.status === 'rented' ? 'selected' : ''}>Rented</option>
+                    </select>
+                    <input type="date" id="date-${car.id}" value="${car.rentedUntil || ''}" placeholder="Rented until">
+                    <button onclick="updateCarStatus('${car.id}')">Update</button>
+                </div>
+            `;
+            carsList.appendChild(carCard);
+        });
+    } catch (error) {
+        console.error('Error loading cars:', error);
+        document.getElementById('carsList').innerHTML = '<p class="no-data">Error loading cars</p>';
+    }
+}
+
+window.updateCarStatus = async function(carId) {
+    const status = document.getElementById(`status-${carId}`).value;
+    const date = document.getElementById(`date-${carId}`).value;
+    
+    try {
+        await updateDoc(doc(db, 'cars', carId), {
+            status: status,
+            rentedUntil: date || null
+        });
+        alert(`Updated car to ${status} until ${date || 'N/A'}`);
+        loadCars(); // Reload to show changes
+    } catch (error) {
+        console.error('Error updating car:', error);
+        alert('Failed to update car status');
+    }
+};
 
 setInterval(() => {
-    loadAnalytics();
+    if (document.getElementById('dashboardContainer').style.display !== 'none') {
+        loadAnalytics();
+    }
 }, 30000);

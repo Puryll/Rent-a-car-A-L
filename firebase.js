@@ -1,6 +1,12 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-analytics.js";
-  import { getFirestore,
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-analytics.js";
+import { getAuth,
+         signInWithEmailAndPassword,
+         createUserWithEmailAndPassword,
+         signOut,
+         onAuthStateChanged,
+         updateProfile } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-auth.js";
+import { getFirestore,
          collection,
          addDoc,
          getDocs,
@@ -21,15 +27,23 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebas
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
   const db = getFirestore(app);
+  const auth = getAuth(app);
 
   const RentACar = collection(db, "Rent-a-car");
 
   export {
     db,
+    auth,
     RentACar,
+    collection,
     addDoc,
     getDocs,
     doc,
     updateDoc,
     deleteDoc,
+    signInWithEmailAndPassword,
+    createUserWithEmailAndPassword,
+    signOut,
+    onAuthStateChanged,
+    updateProfile,
   };

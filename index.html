@@ -20,6 +20,11 @@
                 <li><a href="#comments" class="nav-link">Comments</a></li>
                 <li><a href="#footer" class="nav-link">Contact</a></li>
             </ul>
+            <div class="auth-buttons">
+                <button id="guestBtn" class="auth-btn">Continue as Guest</button>
+                <button id="loginBtn" class="auth-btn">Login</button>
+                <button id="logoutBtn" class="auth-btn" style="display:none;">Logout</button>
+            </div>
         </div>
     </nav>
 
@@ -35,49 +40,99 @@
         <div class="hero-overlay"></div>
     </section>
 
+    <!-- Auth Modal -->
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="loginForm">
+                <h2>Login</h2>
+                <form id="loginFormEl">
+                    <input type="email" id="loginEmail" placeholder="Email" required>
+                    <input type="password" id="loginPassword" placeholder="Password" required>
+                    <button type="submit">Login</button>
+                </form>
+                <p>Don't have an account? <a href="#" id="showSignup">Sign Up</a></p>
+            </div>
+            <div id="signupForm" style="display:none;">
+                <h2>Sign Up</h2>
+                <form id="signupFormEl">
+                    <input type="text" id="signupUsername" placeholder="Username" required>
+                    <input type="email" id="signupEmail" placeholder="Email" required>
+                    <input type="password" id="signupPassword" placeholder="Password" required>
+                    <button type="submit">Sign Up</button>
+                </form>
+                <p>Already have an account? <a href="#" id="showLogin">Login</a></p>
+            </div>
+            <div id="authMessage"></div>
+        </div>
+    </div>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span id="bookingClose" class="close">&times;</span>
+            <h2>Book This Car</h2>
+            <p id="bookingCarName" class="booking-summary"></p>
+            <form id="bookingForm">
+                <input type="text" id="bookingName" placeholder="Your full name" required>
+                <input type="email" id="bookingEmail" placeholder="Your email" required>
+                <label for="bookingUntil">Book until</label>
+                <input type="date" id="bookingUntil" required>
+                <button type="submit">Confirm Booking</button>
+            </form>
+            <p id="bookingMessage" class="comment-message"></p>
+        </div>
+    </div>
+
 <section id="gallery" class="gallery-section">
     <div class="gallery-container">
         <h2 class="section-title">Car Gallery</h2>
         <p class="section-subtitle">Coming Soon - Our Latest Vehicle Collection</p>
 
         <div class="gallery-grid">
-            <div class="gallery-card">
+            <div class="gallery-card" data-car="BMW X1 AUTOMATIK">
                 <img src="bmw-x-1-automatik.jpg" alt="Car 1" class="gallery-image">
+                <div class="car-status-badge" id="status-BMW X1 AUTOMATIK">Available</div>
                 <h3>BMW X1 AUTOMATIK</h3>
                 <p>€35 /day</p>
                 <p>price comming soon</p>
             </div>
 
-            <div class="gallery-card">
+            <div class="gallery-card" data-car="Golf 7 Automatik">
                 <img src="golf-6-plus.jpg" alt="Car 2" class="gallery-image">
+                <div class="car-status-badge" id="status-Golf 7 Automatik">Available</div>
                 <h3>golf 7 automatik</h3>
                 <p>€35 /day</p>
                 <p>price comming soon</p>
             </div>
 
-            <div class="gallery-card">
+            <div class="gallery-card" data-car="Golf 6 Plus">
                 <img src="golf-7-automatik.jpg" alt="Car 3" class="gallery-image">
+                <div class="car-status-badge" id="status-Golf 6 Plus">Available</div>
                 <h3>golf 6 plus</h3>
                 <p>€30 /day</p>
                 <p>price comming soon</p>
             </div>
 
-            <div class="gallery-card">
+            <div class="gallery-card" data-car="Golf 7 Automatik 2">
                 <img src="golf-7-automatik2.jpg" alt="Car 4" class="gallery-image">
+                <div class="car-status-badge" id="status-Golf 7 Automatik 2">Available</div>
                 <h3>golf 7 automatik 2</h3>
                 <p>€35 /day</p>
                 <p>price comming soon</p>
             </div>
 
-            <div class="gallery-card">
+            <div class="gallery-card" data-car="Golf 7 Automatik 3">
                 <img src="golf-7-automatik3.jpg" alt="Car 5" class="gallery-image">
+                <div class="car-status-badge" id="status-Golf 7 Automatik 3">Available</div>
                 <h3>golf 7 automatik 3</h3>
                 <p>€35 /day</p>
                 <p>price comming soon</p>
             </div>
 
-            <div class="gallery-card">
+            <div class="gallery-card" data-car="Golf 7 Automatik 4">
                 <img src="golf-7-automatik4.jpg" alt="Car 6" class="gallery-image">
+                <div class="car-status-badge" id="status-Golf 7 Automatik 4">Available</div>
                 <h3>golf 7 automatik 4</h3>
                 <p>€35 /day</p>
                 <p>price comming soon</p>
@@ -156,7 +211,7 @@
                         <div class="car-price">
                             <span class="price">€30/day</span>
                         </div>
-                        <button class="book-btn">Book Now</button>
+                        <button class="book-btn requires-auth">Book Now</button>
                     </div>
                 </div>
 
@@ -174,7 +229,7 @@
                         <div class="car-price">
                             <span class="price">€35/day</span>
                         </div>
-                        <button class="book-btn">Book Now</button>
+                        <button class="book-btn requires-auth">Book Now</button>
                     </div>
                 </div>
 
@@ -193,7 +248,7 @@
                         <div class="car-price">
                             <span class="price">€40/day</span>
                         </div>
-                        <button class="book-btn">comming soon</button>
+                        <button class="book-btn requires-auth">comming soon</button>
                     </div>
                 </div>
             </div>
@@ -204,7 +259,7 @@
             <h2 class="section-title">Customer Comments & Reviews</h2>
             <p class="section-subtitle">See what our customers think about us</p>
 
-            <div class="comment-form-wrapper">
+            <div class="comment-form-wrapper requires-auth">
                 <form id="commentForm" class="comment-form">
                     <div class="form-group">
                         <label for="userName">Your Name *</label>

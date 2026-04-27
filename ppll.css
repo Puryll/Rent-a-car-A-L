@@ -10,6 +10,60 @@ body {
     color: #333;
 }
 
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.login-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-form h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #667eea;
+}
+
+.login-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.login-form input {
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.login-form button {
+    padding: 0.8rem;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login-form button:hover {
+    background: #5a67d8;
+}
+
+#adminMessage {
+    margin-top: 1rem;
+    color: red;
+    text-align: center;
+}
+
 .admin-container {
     display: flex;
     min-height: 100vh;
@@ -269,7 +323,8 @@ body {
 }
 
 .comments-list,
-.bookings-list {
+.bookings-list,
+.cars-list {
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -364,6 +419,97 @@ body {
 .booking-detail-value {
     font-weight: bold;
     color: #333;
+}
+
+.car-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    animation: slideInUp 0.3s ease;
+}
+
+.car-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.car-name {
+    font-weight: bold;
+    color: #333;
+    font-size: 1.1rem;
+}
+
+.car-status {
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.car-status.available {
+    background: #d4edda;
+    color: #155724;
+}
+
+.car-status.rented {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.car-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.car-detail {
+    padding: 0.8rem;
+    background: #f8f9fa;
+    border-radius: 5px;
+}
+
+.car-detail-label {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.3rem;
+}
+
+.car-detail-value {
+    font-weight: bold;
+    color: #333;
+}
+
+.car-controls {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.car-controls input,
+.car-controls select {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+.car-controls button {
+    padding: 0.5rem 1rem;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.car-controls button:hover {
+    background: #5a67d8;
 }
 
 @media (max-width: 768px) {

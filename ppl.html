@@ -9,7 +9,20 @@
     <script src="pl.js" type="module"></script>
 </head>
 <body>
-    <div class="admin-container">
+    <div id="loginContainer" class="login-container">
+        <div class="login-form">
+            <h2>Admin Login</h2>
+            <form id="adminLoginForm">
+                <input type="text" id="adminUsername" placeholder="Username" required>
+                <input type="password" id="adminPassword" placeholder="Password" required>
+                <input type="email" id="adminEmail" placeholder="Email" required>
+                <button type="submit">Login</button>
+            </form>
+            <div id="adminMessage"></div>
+        </div>
+    </div>
+
+    <div id="dashboardContainer" style="display:none;">
         <aside class="sidebar">
             <div class="sidebar-header">
                 <h2>Rent a car A&L</h2>
@@ -19,6 +32,7 @@
                 <button class="nav-btn active" data-tab="analytics">📊 Analytics</button>
                 <button class="nav-btn" data-tab="comments">💬 Comments</button>
                 <button class="nav-btn" data-tab="bookings">🚗 Bookings</button>
+                <button class="nav-btn" data-tab="cars">🚙 Cars</button>
             </nav>
             <div class="sidebar-footer">
                 <a href="https://rent-a-car-a-l.vercel.app/" class="back-link">← Back to Website</a>
@@ -99,7 +113,15 @@
                     <p class="no-data">No bookings recorded yet</p>
                 </div>
             </section>
+
+            <section id="cars" class="tab-content">
+                <h2>Car Management</h2>
+                <div id="carsList" class="cars-list">
+                    <p class="no-data">Loading cars...</p>
+                </div>
+            </section>
         </main>
+    </div>
     </div>
 </body>
 </html>
